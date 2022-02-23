@@ -5,6 +5,8 @@
  * semaphore.cpp
 ***********************************************************/
 #include "semaphore.h"
+
+//default contructor
 Semaphore::Semaphore(int c = 0): count(c)
 {
 }

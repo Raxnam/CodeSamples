@@ -132,7 +132,7 @@ void OAHashTable::insert(const char *Key, const T& Data)
         }
       }
     }
-  std::cout << "whoops" << std::endl;
+  std::cout << "something is wrong" << std::endl;
   return;
 }
 

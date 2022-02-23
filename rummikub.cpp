@@ -1,4 +1,11 @@
+//Cameron Monks
+//CS280
+//Rummikub
+//This program determines if a given hand is valid in the game Rummikub.
+//The goal for this assignment was to write such a program, with an emphasis on speed, and early termination optimizations
 #include "rummikub.h"
+
+enum Color { Red, Green, Blue, Yellow };
 
 
 RummiKub::Add(Tile cons& tile)
@@ -6,16 +13,19 @@ RummiKub::Add(Tile cons& tile)
   hand.push_back(tile);
 }
 
-
-
+/*
+This is a recursive function that builds all possible combinations of the tiles, and returns true if it finds a valid hand using all tiles
+Input:  tile, 
+Output: bool - whether or not a valid hand has been found
+*/
 bool RummiKub::solve_rec(Tile tile) 
 {
-  bool solved = false;
+    bool solved = false;
     if(hand.size < 1)
     {
       // base case
       // out of tiles - check if runs and groups are legal
-      // return true if yest and exit
+      // return true if yes and exit
       for(int i = 0; i < runs.size(); i++)
       {
         if(runs[i].size < 3)
@@ -49,7 +59,7 @@ bool RummiKub::solve_rec(Tile tile)
       }
     }
     
-    add to an avalable group
+    //add to an avalable group
     if(!solved)
     {
       for(int i = 0; i < groups.size(); i++)
@@ -87,15 +97,6 @@ bool RummiKub::solve_rec(Tile tile)
       hand.pop_back();
       solved = solve(hand.back());
     }
-    
-    
-    
-    /*for ( action : actions ) {
-        if()// action is legal execute it
-        solve( ... ); // recursive call
-        if()// solved - return true;
-        undo the action
-    }*/
 
     return false; // could not find place for current tile - backtrack
 }
